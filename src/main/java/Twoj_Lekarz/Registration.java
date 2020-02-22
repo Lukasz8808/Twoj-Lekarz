@@ -25,7 +25,7 @@ import javax.persistence.*;
         @ManyToOne
         private Doctor doctor;
         @ManyToOne
-        private Pacjent patient;
+        private Patient patient;
 
     }
 

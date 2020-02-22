@@ -7,17 +7,17 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Pacjent")
+@Table(name = "Patient")
 @Getter @Setter @EqualsAndHashCode(of = "id")
 
-public class Pacjent {
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String Name;
     private String FirstName;
     private String Age;
-    private String Pesel;
+    private String email;
     private String Street;
     private String City;
     private String Phone;
