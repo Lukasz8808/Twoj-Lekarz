@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 
     @Entity
-    @Table(name = "rejestracja")
+    @Table(name = "registrations")
     @Getter @Setter
     @EqualsAndHashCode(of = "id")
     public class Registration {

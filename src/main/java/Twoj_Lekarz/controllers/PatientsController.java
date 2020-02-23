@@ -1,7 +1,7 @@
 package Twoj_Lekarz.controllers;
 
 import Twoj_Lekarz.Patient;
-import Twoj_Lekarz.repos.PatientRepostory;
+import Twoj_Lekarz.repos.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,16 +13,16 @@ import java.util.List;
 @RequestMapping("/patients")
 @Controller
 public class PatientsController {
-    private final PatientRepostory patientRepostory;
+    private final PatientRepository patientRepository;
 
     @Autowired
-    public PatientsController(PatientRepostory patientRepostory) {
-        this.patientRepostory = patientRepostory;
+    public PatientsController(PatientRepository patientRepositorytory) {
+        this.patientRepository = patientRepositorytory;
     }
 
     @GetMapping
-    public String schowPacjent(Model model) {
-        List<Patient> allPatients = patientRepostory.findAll();
+    public String schowPatient(Model model) {
+        List<Patient> allPatients = patientRepository.findAll();
         model.addAttribute("allPatients",allPatients);
         return "/views/patients.jsp";
 
