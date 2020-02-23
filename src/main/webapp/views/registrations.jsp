@@ -12,9 +12,31 @@
     <title>Rejestracja</title>
 </head>
 <body>
-<ul> <c:forEach items="${allRegistration}" var="registration">
-    <li>${registration.date}, ${registration.patient}, ${registration.doctor},${registration.duration}, ${registration.id}, ${registration.time}</li>
-    </ul>
+<div>
+    <h2>Zarejestruj wizytę</h2>
+    <form method="post" action="/registrations/add">
+        <p>Dzień: <input type="date" name="date"/></p>
+        <p>Godzina: <input type="time" name="time"/></p>
+        <p>Pacjent: <select name="patientId">
+            <c:forEach items="${patients}" var="patient">
+                <option value="${patient.id}">${patient.name} ${patient.surname} (${patient.phone})</option>
+            </c:forEach>
+        </select></p>
+        <p>Doctor: <select name="doctorId">
+            <c:forEach items="${doctors}" var="doctor">
+                <option value="${doctor.id}">${doctor.name} (${doctor.specialization})</option>
+            </c:forEach>
+        </select></p>
+        <p>
+            <button type="submit">Zarejestruj wizytę</button>
+        </p>
+    </form>
+</div>
+<ul>
+    <c:forEach items="${allRegistration}" var="registration">
+        <li>${registration.date}, ${registration.patient.name} ${registration.patient.surname}, ${registration.doctor.name},${registration.duration}, ${registration.id}, ${registration.time}</li>
+    </c:forEach>
+</ul>
 
 </body>
 </html>
