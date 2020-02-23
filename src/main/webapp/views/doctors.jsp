@@ -33,6 +33,7 @@
             <td>${doctor.name},</td>
             <td>${doctor.specialization}</td>
             <td>${doctor.office}</td>
+
             <td><form method="post" action="/doctors/remove">
                 <input type="hidden" name="doctorId" value="${doctor.id}"/>
                 <button type="submit">Usuń</button>
