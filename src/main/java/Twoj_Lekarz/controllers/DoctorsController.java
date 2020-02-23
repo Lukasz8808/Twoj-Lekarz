@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -26,5 +27,22 @@ public class DoctorsController {
         List<Doctor> allDoctors = doctorRepository.findAll();
         model.addAttribute("allDoctors", allDoctors);
         return "/views/doctors.jsp";
+    }
+
+    @PostMapping("/add")
+    public String addDoctor(String name, String specialization, String office) {
+        Doctor doctor = new Doctor();
+        doctor.setName(name);
+        doctor.setSpecialization(specialization);
+        doctor.setOffice(office);
+        doctorRepository.save(doctor);
+        return "redirect:/doctors";
+    }
+
+    @PostMapping("/remove")
+    public String removeDoctor(Integer doctorId) {
+        Doctor doctor = doctorRepository.getOne(doctorId);
+        doctorRepository.delete(doctor);
+        return "redirect:/doctors";
     }
 }
