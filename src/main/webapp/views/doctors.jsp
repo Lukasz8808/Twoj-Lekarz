@@ -41,5 +41,7 @@
         </tr>
     </c:forEach>
 </table>
+<p></p>
+<a href="registrations">POWRÓT</a>
 </body>
 </html>
